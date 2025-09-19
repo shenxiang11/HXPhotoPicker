@@ -163,7 +163,7 @@ public extension HX.ImageResource {
                 }()
                 
                 /// 已选列表删除图标
-                public var delete: ImageType = .local("hx_picker_toolbar_select_cell_delete")
+                public var delete: ImageType = .local("photo-remove@3x")
             }
         }
         

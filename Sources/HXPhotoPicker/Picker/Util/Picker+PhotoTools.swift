@@ -387,6 +387,8 @@ extension PhotoTools {
     
     public static var redBookConfig: PickerConfiguration {
         var config = getWXPickerConfig()
+        
+        config.languageType = .simplifiedChinese
         config.modalPresentationStyle = .fullScreen
         config.appearanceStyle = .normal
         config.selectOptions = [.photo, .gifPhoto, .livePhoto, .video]
@@ -401,15 +403,16 @@ extension PhotoTools {
         config.maximumSelectedVideoCount = 0
         config.allowSelectedTogether = true
         config.isFetchDeatilsAsset = true
+        config.photoSelectionTapAction = .quickSelect
         
-        let redColor = "#FE2443".color
+        let redColor = UIColor(red: 0.59, green: 0.19, blue: 1, alpha: 1)
         config.albumList.tickColor = redColor
         
         config.albumController.headerButtonTitleColor = redColor
         config.albumController.mediaTitleColor = redColor
         config.albumController.imageColor = redColor
         
-        config.photoList.listView = PhotoPickerPageViewController.self
+//        config.photoList.listView = PhotoPickerPageViewController.self
         config.photoList.allowSwipeToSelect = false
         config.photoList.backgroundColor = .black
         config.photoList.leftNavigationItems = [PhotoImageCancelItemView.self]
@@ -418,7 +421,7 @@ extension PhotoTools {
         config.photoList.allowAddCamera = false
         config.photoList.allowAddLimit = false
         
-        config.photoList.titleView.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
+        config.photoList.titleView.backgroundColor = .clear
         config.photoList.titleView.arrow.backgroundColor = .clear
         config.photoList.titleView.arrow.arrowColor = .white
         

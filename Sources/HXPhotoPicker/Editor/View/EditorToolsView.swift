@@ -49,7 +49,7 @@ class EditorToolsView: UIView {
                 }
             }else if contentType == .video {
                 switch option.type {
-                case .time, .music, .graffiti, .chartlet, .text, .cropSize, .filter, .filterEdit:
+                case .time, .cropSize:
                     options.append(option)
                 default:
                     break

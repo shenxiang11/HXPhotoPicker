@@ -243,11 +243,14 @@ public class PhotoToolBarView: UIView, PhotoToolBar {
                 finishBtn.setTitle(.textPreview.bottomView.finishTitle.text, for: .normal)
                 finishBtn.titleLabel?.font = .textPreview.bottomView.finishTitleFont
             }
-            finishBtn.layer.cornerRadius = 3
+            finishBtn.layer.cornerRadius = 40 / 2
+            finishBtn.layer.borderWidth = 2.0
+            finishBtn.contentEdgeInsets = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
             finishBtn.layer.masksToBounds = true
             if config.selectMode == .multiple {
                 finishBtn.isEnabled = false
             }
+            finishBtn.layer.borderColor = finishBtn.isEnabled ? "#D9B5FF".color.cgColor : UIColor.clear.cgColor
             finishBtn.addTarget(self, action: #selector(didFinishButtonClick), for: .touchUpInside)
             contentView.addSubview(finishBtn)
         }
@@ -902,17 +905,19 @@ extension PhotoToolBarView {
         var finishWidth: CGFloat = finishBtn.currentTitle!.localized.width(
             ofFont: finishBtn.titleLabel!.font,
             maxHeight: 50
-        ) + 20
+        ) + 24 * 2
         if finishWidth < 60 {
             finishWidth = 60
         }
-        finishBtn.size = .init(width: finishWidth, height: 33)
+        finishBtn.size = .init(width: finishWidth, height: 40)
         if UIDevice.rightMargin > 0 {
             finishBtn.hxPicker_x = width - UIDevice.rightMargin - finishWidth
         }else {
             finishBtn.hxPicker_x = width - finishWidth - 12
         }
         finishBtn.centerY = 25
+        
+        finishBtn.layer.borderColor = finishBtn.isEnabled ? "#D9B5FF".color.cgColor : UIColor.clear.cgColor
     }
 }
 
