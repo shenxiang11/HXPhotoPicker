@@ -206,7 +206,13 @@ public extension HX.TextManager {
             public var permissionsTitle: TextType = .localized("无法访问相册中所有照片，\n请允许访问「照片」中的「所有照片」")
             public var permissionsTitleFont: UIFont = .systemFont(ofSize: 15)
             public var finishTitle: TextType = .localized("确认")
-            public var finishTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+            public var finishTitleFont: UIFont = {
+                if let customFont = UIFont(name: "eryaxindahei", size: 16) {
+                    return customFont
+                } else {
+                    return HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+                }
+            }()
             public var previewTitle: TextType = .localized("预览")
             public var previewTitleFont: UIFont = .systemFont(ofSize: 14, weight: .semibold)
             public var editTitle: TextType = .localized("编辑")
