@@ -195,7 +195,7 @@ class EditorCanvasView: UIView {
             historyDatas.append(history.dataRepresentation())
         }
         let data: Data
-        if currentIndex < historyDatas.count, currentIndex >= 0 {
+        if index < historyDatas.count, index >= 0 {
             data = historyDatas[index]
         }else {
             data = .init()
@@ -350,8 +350,9 @@ extension EditorCanvasView: PKCanvasViewDelegate {
     
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         if !isClear {
-            if currentIndex >= 0, !drawingCurrentHistory.isEmpty, currentIndex < drawingCurrentHistory.count - 1 {
-                drawingCurrentHistory.removeSubrange(currentIndex+1..<drawingCurrentHistory.count)
+            if !drawingCurrentHistory.isEmpty, currentIndex < drawingCurrentHistory.count - 1 {
+                let startIndex = max(currentIndex + 1, 0)
+                drawingCurrentHistory.removeSubrange(startIndex..<drawingCurrentHistory.count)
                 currentIndex = drawingCurrentHistory.count - 1
             }
             let newDrawing = canvasView.drawing
